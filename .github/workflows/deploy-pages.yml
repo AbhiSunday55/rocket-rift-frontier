@@ -1,0 +1,66 @@
+name: Deploy playable build to GitHub Pages
+
+# Builds the client in standalone guest mode (no backend required) and publishes
+# it to GitHub Pages, so the game is playable straight from a URL.
+#
+# The build deliberately sets VITE_API_URL to an empty string and
+# VITE_STANDALONE=true. That makes the client skip every network call, save
+# progress to localStorage, and label server-backed surfaces as local/demo data
+# instead of hanging on a dead request. See client/src/api/client.ts.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build standalone client
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build client (standalone guest mode)
+        working-directory: client
+        env:
+          VITE_API_URL: ''
+          VITE_STANDALONE: 'true'
+        run: npx vite build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: client/dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

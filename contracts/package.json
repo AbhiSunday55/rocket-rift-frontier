@@ -1,0 +1,24 @@
+{
+  "name": "@rocket-rift/contracts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.ts",
+    "deploy:sepolia": "hardhat run scripts/deploy.ts --network sepolia",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "verify:deployment": "hardhat run scripts/verify-deployment.ts",
+    "verify:sepolia": "hardhat run scripts/verify-deployment.ts --network sepolia",
+    "node": "hardhat node",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.10",
+    "typescript": "^5.5.4",
+    "ts-node": "^10.9.2"
+  }
+}

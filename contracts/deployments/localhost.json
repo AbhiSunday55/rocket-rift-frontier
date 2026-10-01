@@ -1,0 +1,25 @@
+{
+  "network": "localhost",
+  "chainId": 31337,
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "deployedAt": "2026-10-01T05:16:09.408Z",
+  "feeBps": 250,
+  "treasury": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "baseURI": "https://cdn.rocketrift.game/metadata/",
+  "contracts": {
+    "shipNft": "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
+    "itemNft": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+    "marketplace": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+  },
+  "allowListed": {
+    "shipNft": true,
+    "itemNft": true
+  },
+  "txHashes": {
+    "shipNft": "0x327a4e3a1b6e48f378a79ab05fa9490297f5a7b120366f3018f378a6e0816a9c",
+    "itemNft": "0x4c08037ce12c491fc2573302015216cb759649f41dc3d36e169189a6663b0cdb",
+    "marketplace": "0x124bf03f91fa0f12c2a44d78bc450d283832ec6e25c56955699511f9641ae8c2",
+    "allowShipNft": "0xe2410f3fc58400b9aba59a3a98aec2ffdea04ee584f96cbd33a860b5eae901e0",
+    "allowItemNft": "0xabe684fb789f1d06cb4de23c6bdd4f62479f69d1da17d0c7a6201c45691b8f3c"
+  }
+}

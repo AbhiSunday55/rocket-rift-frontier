@@ -1,0 +1,28 @@
+{
+  "name": "rocket-rift-frontier",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ROCKET RIFT: FRONTIER — a free-to-play Web3 rocket shooter with optional NFT ownership and P2P trading.",
+  "license": "MIT",
+  "workspaces": [
+    "client",
+    "server",
+    "contracts"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace client",
+    "dev:server": "npm run dev --workspace server",
+    "build": "npm run build --workspace client",
+    "build:server": "npm run build --workspace server",
+    "build:all": "npm run build --workspace client && npm run build --workspace server",
+    "typecheck": "npm run typecheck --workspace client && npm run typecheck --workspace server",
+    "test": "npm run test --workspace server",
+    "contracts:compile": "npm run compile --workspace contracts",
+    "contracts:test": "npm run test --workspace contracts",
+    "contracts:deploy": "npm run deploy --workspace contracts",
+    "db:migrate": "psql \"$DATABASE_URL\" -f database/schema.sql"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,47 @@
+# ── Dependencies ──────────────────────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+
+# ── Build output ──────────────────────────────────────────────────────────────
+dist/
+build/
+out/
+.vite/
+*.tsbuildinfo
+
+# ── Hardhat / Solidity ────────────────────────────────────────────────────────
+artifacts/
+cache/
+typechain/
+typechain-types/
+coverage/
+coverage.json
+
+# ── Secrets — NEVER commit these ──────────────────────────────────────────────
+# Real environment files hold JWT/HMAC secrets and deployer private keys.
+# Only the *.example templates are tracked.
+.env
+.env.*
+!.env.example
+!*.env.example
+*.pem
+*.key
+
+# ── Logs & OS cruft ───────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# ── Sandbox / agent scratch (not part of the project) ─────────────────────────
+.skills/
+documents/
+webpages/
+qc/
+downloads/
