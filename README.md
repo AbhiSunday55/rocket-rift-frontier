@@ -4,6 +4,8 @@ A free-to-play Web3 rocket shooter. Fly, loot, craft and trade across a procedur
 generated frontier — with **optional** NFT ownership. The game is fully playable with
 no wallet and no network; the chain is an enhancement, never a gate.
 
+**Repository:** https://github.com/AbhiSunday55/rocket-rift-frontier · **License:** MIT
+
 ```
 rocket-rift-frontier/
 ├── client/      Phaser 3 game + React shell (Vite)
@@ -16,9 +18,11 @@ rocket-rift-frontier/
 
 ## ▶ Play it now
 
-**https://static.teamily.ai/sites/26501da1-61d8-4a2d-9182-c9472b68f8a2/webpages/rocket-rift-frontier/index.html**
+**https://abhisunday55.github.io/rocket-rift-frontier/** — GitHub Pages, built by CI on every push to `main`
 
-Open it in any modern browser and press **LAUNCH RUN**. No wallet, no install, no
+Mirror: **https://static.teamily.ai/sites/26501da1-61d8-4a2d-9182-c9472b68f8a2/webpages/rocket-rift-frontier/index.html**
+
+Open either in any modern browser and press **LAUNCH RUN**. No wallet, no install, no
 backend required.
 
 The published build runs in **standalone guest mode**: it makes no network calls at
@@ -103,6 +107,25 @@ To reproduce the published standalone build:
 cd client && VITE_API_URL= VITE_STANDALONE=true npx vite build
 # then serve client/dist/ from any static host
 ```
+
+---
+
+## Deploying the web build (GitHub Pages)
+
+The playable build is published automatically by
+[`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml) on every
+push to `main` — no manual step, no committed build output.
+
+The workflow installs only the client workspace, builds with `VITE_API_URL=''` and
+`VITE_STANDALONE='true'`, and uploads `client/dist` as the Pages artifact. Pages is
+configured with `build_type: workflow`, so the site is served from the Actions
+artifact rather than a branch.
+
+**To redeploy:** push to `main`, or run the workflow manually from
+**Actions → Deploy playable build to GitHub Pages → Run workflow**.
+
+To point the published build at a live API instead of guest mode, set `VITE_API_URL`
+in the workflow's build step to your server URL and re-run.
 
 ---
 
@@ -273,6 +296,7 @@ Verified locally, end to end:
 | `hardhat compile` + `hardhat test` | ✅ 45 files compiled, 4/4 tests pass |
 | Deploy + read-back verify (local Hardhat node) | ✅ 21/21 checks pass |
 | Published web build loads and plays in a real browser | ✅ command centre + live run render, HUD shows Raptor-X stats |
+| GitHub Pages deployment (CI) | ✅ workflow green; site serves the game, all assets 200 and byte-identical to the local build |
 | Sepolia deployment | ⛔ **blocked — needs a funded `DEPLOYER_PRIVATE_KEY`** |
 
 The API smoke test ships with the repo — with the server and Postgres running:
